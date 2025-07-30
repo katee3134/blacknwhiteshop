@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black&amp;White Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- LANGUAGE SELECTOR -->
+  <div class="text-right px-4 py-2">
+    <label for="langSelect" class="mr-2 text-sm font-semibold">Language:</label>
+    <select id="langSelect" class="border px-2 py-1">
+      <option value="en">English</option>
+      <option value="lv">Latviski</option>
+    </select>
+  </div>
+
+  <!-- STORE NAME WITH BLACK SYMBOL -->
+  <h1 class="text-3xl font-bold text-center mt-4">
+    <span style="color: black;">⬤</span> Black&amp;White
+  </h1>
+
+  <!-- ADMIN LOGIN BUTTON -->
+  <div class="text-center mt-4">
+    <button onclick="toggleAdminLogin()" class="bg-gray-800 text-white px-4 py-2">Admin Login</button>
+  </div>
+
+  <!-- ADMIN LOGIN FORM -->
+  <div id="adminLogin" class="hidden text-center mt-4">
+    <input type="password" id="adminPassword" class="border px-2 py-1" placeholder="Enter password">
+    <button onclick="loginAsAdmin()" class="bg-black text-white px-4 py-1">Login</button>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="hidden border mt-6 p-4">
+    <h2 class="text-xl font-semibold mb-2">Admin Panel</h2>
+    <form id="newProductForm" class="space-y-2">
+      <input type="text" id="productName" class="w-full border px-2 py-1" placeholder="Product name" required>
+      <input type="number" id="productPrice" class="w-full border px-2 py-1" placeholder="Price (€)" required>
+      <input type="url" id="productImage" class="w-full border px-2 py-1" placeholder="Image URL" required>
+      <select id="productCategory" class="w-full border px-2 py-1">
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+      </select>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2">Add Product</button>
+    </form>
+  </div>
+
+  <!-- MEN'S SECTION -->
+  <h2 class="col-span-full text-2xl font-semibold mt-8" data-i18n="men">Men</h2>
+  <div id="menProducts"></div>
+
+  <!-- WOMEN'S SECTION -->
+  <h2 class="col-span-full text-2xl font-semibold mt-8" data-i18n="women">Women</h2>
+  <div id="womenProducts"></div>
+
+  <!-- CART -->
+  <section class="mt-12 border-t pt-6">
+    <h2 class="text-xl font-semibold mb-4" data-i18n="yourCart">Your Cart</h2>
+    <div id="cart" class="space-y-2"></div>
+    <p class="font-semibold mt-4" data-i18n="total">Total: €<span id="total">0.00</span></p>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="mt-12 border-t pt-6">
+    <h2 class="text-xl font-semibold mb-4" data-i18n="customerReviews">Customer Reviews</h2>
+    <div id="reviews" class="space-y-4"></div>
+    <form id="reviewForm" class="mt-6 space-y-2">
+      <label class="block">
+        <span class="text-sm" data-i18n="yourName">Your Name:</span>
+        <input type="text" id="reviewerName" class="w-full border px-2 py-1" required>
+      </label>
+      <label class="block">
+        <span class="text-sm" data-i18n="review">Review:</span>
+        <textarea id="reviewText" class="w-full border px-2 py-1" required></textarea>
+      </label>
+      <button type="submit" class="bg-black text-white px-4 py-2" data-i18n="submitReview">Submit Review</button>
+    </form>
+  </section>
+
+  <!-- PAYMENT SECTION -->
+  <section class="mt-12 border-t pt-6">
+    <h2 class="text-xl font-semibold mb-4" data-i18n="checkoutTitle">Checkout</h2>
+    <form id="checkoutForm" class="space-y-4">
+      <label class="block">
+        <span class="text-sm" data-i18n="fullName">Full Name:</span>
+        <input type="text" class="w-full border px-2 py-1" required>
+      </label>
+      <label class="block">
+        <span class="text-sm" data-i18n="shippingAddress">Shipping Address:</span>
+        <input type="text" class="w-full border px-2 py-1" required>
+      </label>
+      <label class="block">
+        <span class="text-sm" data-i18n="cardNumber">Credit Card Number:</span>
+        <input type="text" class="w-full border px-2 py-1" placeholder="1234 5678 9012 3456" required>
+      </label>
+      <label class="block">
+        <span class="text-sm" data-i18n="expirationDate">Expiration Date:</span>
+        <input type="text" class="w-full border px-2 py-1" placeholder="MM/YY" required>
+      </label>
+      <label class="block">
+        <span class="text-sm" data-i18n="cvv">Security Code (CVV):</span>
+        <input type="text" class="w-full border px-2 py-1" placeholder="123" required>
+      </label>
+      <button type="submit" class="bg-black text-white px-4 py-2" data-i18n="confirmPurchase">Confirm Purchase</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
